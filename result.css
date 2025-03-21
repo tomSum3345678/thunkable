@@ -32,18 +32,36 @@ h1 {
     margin: 15px 0;
 }
 
-button {
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#play-again-button, #back-to-main-button {
     padding: 15px 30px;
     font-size: 1.2em;
     font-weight: bold;
     color: #ffffff;
-    background-color: #4CAF50;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+#play-again-button {
+    background-color: #FF9800; /* Orange for "Play Again" */
+}
+
+#play-again-button:hover {
+    background-color: #fb8c00;
+}
+
+#back-to-main-button {
+    background-color: #4CAF50; /* Green for "Back to Main Menu" */
+}
+
+#back-to-main-button:hover {
     background-color: #45a049;
 }

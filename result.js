@@ -9,6 +9,11 @@ window.onload = function() {
     document.getElementById('time-display').textContent = `Total Time: ${totalTime} sec`;
 };
 
+// Function to start a new game
+function playAgain() {
+    window.location.href = "game.html";
+}
+
 // Function to return to the main menu
 function returnToMain() {
     window.location.href = "index.html";
