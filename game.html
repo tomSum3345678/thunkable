@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Game - Play</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="game-container">
+        <div id="timer">10.0 sec</div>
+        <div id="question-number">Question 1</div>
+        <div id="question-text">11 + 22 = ?</div>
+        <input type="number" id="answer-input" placeholder="Your Answer">
+        <button id="done-button" onclick="checkAnswer()">DONE</button>
+        <div id="feedback" style="display: none;"></div>
+        <button id="next-button" style="display: none;" onclick="nextQuestion()">NEXT QUESTION</button>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
