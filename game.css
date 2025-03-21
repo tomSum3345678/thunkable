@@ -49,7 +49,7 @@ body {
     text-align: center;
 }
 
-#done-button, #next-button, #continue-button {
+#done-button, #next-button, #play-again-button, #show-result-button, #back-to-main-button {
     padding: 10px 20px;
     font-size: 1.1em;
     font-weight: bold;
@@ -76,14 +76,6 @@ body {
     background-color: #1e88e5;
 }
 
-#continue-button {
-    background-color: #FF9800;
-}
-
-#continue-button:hover {
-    background-color: #fb8c00;
-}
-
 #feedback {
     font-size: 1.2em;
     font-weight: bold;
@@ -96,6 +88,30 @@ body {
 
 #feedback.wrong {
     color: #f44336;
+}
+
+/* Styles for the end-game options */
+#end-game-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#play-again-button {
+    background-color: #FF9800;
+}
+
+#play-again-button:hover {
+    background-color: #fb8c00;
+}
+
+#show-result-button {
+    background-color: #4CAF50;
+}
+
+#show-result-button:hover {
+    background-color: #45a049;
 }
 
 /* Styles for the result container */
@@ -114,4 +130,12 @@ body {
     font-weight: bold;
     color: #333;
     margin: 15px 0;
+}
+
+#back-to-main-button {
+    background-color: #2196F3;
+}
+
+#back-to-main-button:hover {
+    background-color: #1e88e5;
 }

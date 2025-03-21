@@ -48,11 +48,8 @@ function generateQuestion() {
     document.getElementById('feedback').style.display = 'none';
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('done-button').style.display = 'block';
-
-    // Reset the next button text to "NEXT QUESTION" for questions 1–9
-    const nextButton = document.getElementById('next-button');
-    nextButton.textContent = 'NEXT QUESTION';
-    nextButton.setAttribute('data-label', 'NEXT QUESTION');
+    document.getElementById('end-game-options').style.display = 'none';
+    document.getElementById('result-container').style.display = 'none';
 }
 
 // Start the countdown timer
@@ -82,7 +79,7 @@ function checkAnswer() {
     if (isCorrect) score++;
 }
 
-// Show feedback (correct or wrong) and update the next button text if it's the last question
+// Show feedback (correct or wrong) and show end-game options if it's the last question
 function showFeedback(isCorrect) {
     const feedbackDiv = document.getElementById('feedback');
     feedbackDiv.style.display = 'block';
@@ -94,37 +91,22 @@ function showFeedback(isCorrect) {
         feedbackDiv.className = 'wrong';
     }
     document.getElementById('done-button').style.display = 'none';
-    document.getElementById('next-button').style.display = 'block';
 
-    // If this is the last question, change the button text to "Show Result"
+    // If this is the last question, show the end-game options
     if (currentQuestion === totalQuestions) {
-        const nextButton = document.getElementById('next-button');
-        nextButton.textContent = 'Show Result';
-        nextButton.setAttribute('data-label', 'Show Result');
+        document.getElementById('next-button').style.display = 'none';
+        document.getElementById('end-game-options').style.display = 'block';
+    } else {
+        document.getElementById('next-button').style.display = 'block';
     }
 }
 
-// Handle the next action (either go to the next question or show the result)
+// Handle the next action (go to the next question)
 function handleNextAction() {
     const nextButton = document.getElementById('next-button');
     const label = nextButton.getAttribute('data-label');
 
-    if (label === 'Show Result') {
-        // Hide game elements
-        document.getElementById('timer').style.display = 'none';
-        document.getElementById('question-number').style.display = 'none';
-        document.getElementById('question-text').style.display = 'none';
-        document.getElementById('answer-input').style.display = 'none';
-        document.getElementById('done-button').style.display = 'none';
-        document.getElementById('feedback').style.display = 'none';
-        document.getElementById('next-button').style.display = 'none';
-
-        // Show the result container
-        const resultContainer = document.getElementById('result-container');
-        resultContainer.style.display = 'block';
-        document.getElementById('score-display').textContent = `Score: ${score}/10`;
-        document.getElementById('time-display').textContent = `Total Time: ${totalTime.toFixed(1)} sec`;
-    } else {
+    if (label === 'NEXT QUESTION') {
         nextQuestion();
     }
 }
@@ -149,8 +131,8 @@ function playAgain() {
     totalTime = 0.0;
     timeUsedForQuestion = 0.0;
 
-    // Hide the result container
-    document.getElementById('result-container').style.display = 'none';
+    // Hide end-game options
+    document.getElementById('end-game-options').style.display = 'none';
 
     // Show game elements again
     document.getElementById('timer').style.display = 'block';
@@ -164,4 +146,27 @@ function playAgain() {
     // Start a new game
     generateQuestion();
     startTimer();
+}
+
+// Function to show the final result
+function showResult() {
+    // Hide game elements and end-game options
+    document.getElementById('timer').style.display = 'none';
+    document.getElementById('question-number').style.display = 'none';
+    document.getElementById('question-text').style.display = 'none';
+    document.getElementById('answer-input').style.display = 'none';
+    document.getElementById('done-button').style.display = 'none';
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('end-game-options').style.display = 'none';
+
+    // Show the result container
+    const resultContainer = document.getElementById('result-container');
+    resultContainer.style.display = 'block';
+    document.getElementById('score-display').textContent = `Score: ${score}/10`;
+    document.getElementById('time-display').textContent = `Total Time: ${totalTime.toFixed(1)} sec`;
+}
+
+// Function to return to the main menu
+function backToMain() {
+    window.location.href = "index.html";
 }

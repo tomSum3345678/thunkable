@@ -15,12 +15,17 @@
         <button id="done-button" onclick="checkAnswer()">DONE</button>
         <div id="feedback" style="display: none;"></div>
         <button id="next-button" style="display: none;" data-label="NEXT QUESTION" onclick="handleNextAction()">NEXT QUESTION</button>
-        <!-- New elements for displaying the final result -->
+        <!-- Buttons for after the 10th question -->
+        <div id="end-game-options" style="display: none;">
+            <button id="play-again-button" onclick="playAgain()">Play Again</button>
+            <button id="show-result-button" onclick="showResult()">Show Result</button>
+        </div>
+        <!-- Result container for showing the final result -->
         <div id="result-container" style="display: none;">
             <h2>Game Over!</h2>
             <div id="score-display">Score: 0/10</div>
             <div id="time-display">Total Time: 0.0 sec</div>
-            <button id="continue-button" onclick="playAgain()">Continue</button>
+            <button id="back-to-main-button" onclick="backToMain()">Back to Main Menu</button>
         </div>
     </div>
     <script src="game.js"></script>
