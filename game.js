@@ -48,6 +48,11 @@ function generateQuestion() {
     document.getElementById('feedback').style.display = 'none';
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('done-button').style.display = 'block';
+
+    // Reset the next button text to "NEXT QUESTION" for questions 1–9
+    const nextButton = document.getElementById('next-button');
+    nextButton.textContent = 'NEXT QUESTION';
+    nextButton.setAttribute('data-label', 'NEXT QUESTION');
 }
 
 // Start the countdown timer
@@ -77,7 +82,7 @@ function checkAnswer() {
     if (isCorrect) score++;
 }
 
-// Show feedback (correct or wrong)
+// Show feedback (correct or wrong) and update the next button text if it's the last question
 function showFeedback(isCorrect) {
     const feedbackDiv = document.getElementById('feedback');
     feedbackDiv.style.display = 'block';
@@ -90,14 +95,34 @@ function showFeedback(isCorrect) {
     }
     document.getElementById('done-button').style.display = 'none';
     document.getElementById('next-button').style.display = 'block';
+
+    // If this is the last question, change the button text to "Show Result"
+    if (currentQuestion === totalQuestions) {
+        const nextButton = document.getElementById('next-button');
+        nextButton.textContent = 'Show Result';
+        nextButton.setAttribute('data-label', 'Show Result');
+    }
 }
 
-// Move to the next question or end the game
+// Handle the next action (either go to the next question or show the result)
+function handleNextAction() {
+    const nextButton = document.getElementById('next-button');
+    const label = nextButton.getAttribute('data-label');
+
+    if (label === 'Show Result') {
+        // Redirect to the results page with score and total time
+        window.location.href = `result.html?score=${score}&time=${totalTime.toFixed(1)}`;
+    } else {
+        nextQuestion();
+    }
+}
+
+// Move to the next question
 function nextQuestion() {
     currentQuestion++;
     if (currentQuestion > totalQuestions) {
-        // End of game - redirect to results page with score and total time
-        window.location.href = `result.html?score=${score}&time=${totalTime.toFixed(1)}`;
+        // This case won't be reached because we handle the last question in showFeedback
+        return;
     } else {
         generateQuestion();
         startTimer();

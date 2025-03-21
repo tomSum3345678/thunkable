@@ -14,7 +14,7 @@
         <input type="number" id="answer-input" placeholder="Your Answer">
         <button id="done-button" onclick="checkAnswer()">DONE</button>
         <div id="feedback" style="display: none;"></div>
-        <button id="next-button" style="display: none;" onclick="nextQuestion()">NEXT QUESTION</button>
+        <button id="next-button" style="display: none;" data-label="NEXT QUESTION" onclick="handleNextAction()">NEXT QUESTION</button>
     </div>
     <script src="game.js"></script>
 </body>
