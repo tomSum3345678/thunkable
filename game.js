@@ -110,8 +110,20 @@ function handleNextAction() {
     const label = nextButton.getAttribute('data-label');
 
     if (label === 'Show Result') {
-        // Redirect to the results page with score and total time
-        window.location.href = `result.html?score=${score}&time=${totalTime.toFixed(1)}`;
+        // Hide game elements
+        document.getElementById('timer').style.display = 'none';
+        document.getElementById('question-number').style.display = 'none';
+        document.getElementById('question-text').style.display = 'none';
+        document.getElementById('answer-input').style.display = 'none';
+        document.getElementById('done-button').style.display = 'none';
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-button').style.display = 'none';
+
+        // Show the result container
+        const resultContainer = document.getElementById('result-container');
+        resultContainer.style.display = 'block';
+        document.getElementById('score-display').textContent = `Score: ${score}/10`;
+        document.getElementById('time-display').textContent = `Total Time: ${totalTime.toFixed(1)} sec`;
     } else {
         nextQuestion();
     }
@@ -127,4 +139,29 @@ function nextQuestion() {
         generateQuestion();
         startTimer();
     }
+}
+
+// Function to reset the game and start a new session
+function playAgain() {
+    // Reset game state
+    currentQuestion = 1;
+    score = 0;
+    totalTime = 0.0;
+    timeUsedForQuestion = 0.0;
+
+    // Hide the result container
+    document.getElementById('result-container').style.display = 'none';
+
+    // Show game elements again
+    document.getElementById('timer').style.display = 'block';
+    document.getElementById('question-number').style.display = 'block';
+    document.getElementById('question-text').style.display = 'block';
+    document.getElementById('answer-input').style.display = 'block';
+    document.getElementById('done-button').style.display = 'block';
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('next-button').style.display = 'none';
+
+    // Start a new game
+    generateQuestion();
+    startTimer();
 }

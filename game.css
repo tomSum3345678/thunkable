@@ -49,7 +49,7 @@ body {
     text-align: center;
 }
 
-#done-button, #next-button {
+#done-button, #next-button, #continue-button {
     padding: 10px 20px;
     font-size: 1.1em;
     font-weight: bold;
@@ -76,6 +76,14 @@ body {
     background-color: #1e88e5;
 }
 
+#continue-button {
+    background-color: #FF9800;
+}
+
+#continue-button:hover {
+    background-color: #fb8c00;
+}
+
 #feedback {
     font-size: 1.2em;
     font-weight: bold;
@@ -88,4 +96,22 @@ body {
 
 #feedback.wrong {
     color: #f44336;
+}
+
+/* Styles for the result container */
+#result-container {
+    text-align: center;
+}
+
+#result-container h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#score-display, #time-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
 }
