@@ -3,11 +3,11 @@ function handlePlay() {
 }
 
 function handleGameRanking() {
-    alert("Showing Game Ranking!");
+    window.location.href = "ranking.html"; // Redirect to the game ranking page
 }
 
 function handleYourRecords() {
-    alert("Showing Your Records!");
+    window.location.href = "records.html"; // Redirect to the your records page
 }
 
 function handleClose() {
